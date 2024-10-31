@@ -1,0 +1,4 @@
+COMBO_ENABLE = yes
+VIA_ENABLE         = yes
+ENCODER_MAP_ENABLE = no
+BOOTMAGIC_ENABLE = yes

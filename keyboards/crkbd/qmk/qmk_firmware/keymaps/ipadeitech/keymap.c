@@ -25,7 +25,25 @@ enum combo_events {
     DVORAK_CTRL_Z,
     QWERTY_CTRL_Z,
     DVORAK_CTRL_Y,
-    QWERTY_CTRL_Y,
+    QWERTY_CTRL_Y
+
+    // LEFT_DVORAK_UP,
+    // LEFT_DVORAK_DOWN,
+    // LEFT_DVORAK_LEFT,
+    // LEFT_DVORAK_RIGHT,
+    // LEFT_QWERTY_UP,
+    // LEFT_QWERTY_DOWN,
+    // LEFT_QWERTY_LEFT,
+    // LEFT_QWERTY_RIGHT,
+
+    // RIGHT_DVORAK_UP,
+    // RIGHT_DVORAK_DOWN,
+    // RIGHT_DVORAK_LEFT,
+    // RIGHT_DVORAK_RIGHT,
+    // RIGHT_QWERTY_UP,
+    // RIGHT_QWERTY_DOWN,
+    // RIGHT_QWERTY_LEFT,
+    // RIGHT_QWERTY_RIGHT,
 };
 
 // Define combos for cut, copy, and paste
@@ -38,9 +56,9 @@ const uint16_t PROGMEM qwerty_paste_combo[] = {KC_C, KC_V, COMBO_END};
 
 // Define combos for tab and ctrl+backspace
 const uint16_t PROGMEM dvorak_tab_combo[] = {KC_ESC, KC_QUOT, COMBO_END};
-const uint16_t PROGMEM dvorak_ctrl_bspc_combo[] = {KC_P, KC_BSPC, COMBO_END};
+const uint16_t PROGMEM dvorak_ctrl_bspc_combo[] = {KC_L, KC_BSPC, COMBO_END};
 const uint16_t PROGMEM qwerty_tab_combo[] = {KC_ESC, KC_Q, COMBO_END};
-const uint16_t PROGMEM qwerty_ctrl_bspc_combo[] = {KC_L, KC_BSPC, COMBO_END};
+const uint16_t PROGMEM qwerty_ctrl_bspc_combo[] = {KC_P, KC_BSPC, COMBO_END};
 
 // Define the combos for undo and redo
 const uint16_t PROGMEM dvorak_ctrl_z_combo[] = {KC_QUOT, KC_COMM, COMBO_END};
@@ -48,7 +66,28 @@ const uint16_t PROGMEM qwerty_ctrl_z_combo[] = {KC_Q, KC_W, COMBO_END};
 const uint16_t PROGMEM dvorak_ctrl_y_combo[] = {KC_DOT, KC_P, COMBO_END};
 const uint16_t PROGMEM qwerty_ctrl_y_combo[] = {KC_E, KC_R, COMBO_END};
 
-combo_t key_combos[VIAL_COMBO_ENTRIES] = {
+// Define the combos for arrow keys (left side)
+// const uint16_t PROGMEM left_dvorak_up_combo[] = {KC_COMM, KC_DOT, COMBO_END};
+// const uint16_t PROGMEM left_dvorak_down_combo[] = {KC_O, KC_E, COMBO_END};
+// const uint16_t PROGMEM left_dvorak_left_combo[] = {KC_A, KC_O, COMBO_END};
+// const uint16_t PROGMEM left_dvorak_right_combo[] = {KC_E, KC_U, COMBO_END};
+// const uint16_t PROGMEM left_qwerty_up_combo[] = {KC_W, KC_E, COMBO_END};
+// const uint16_t PROGMEM left_qwerty_down_combo[] = {KC_S, KC_D, COMBO_END};
+// const uint16_t PROGMEM left_qwerty_left_combo[] = {KC_A, KC_S, COMBO_END};
+// const uint16_t PROGMEM left_qwerty_right_combo[] = {KC_D, KC_F, COMBO_END};
+
+// Define the combos for arrow keys (right side)
+// const uint16_t PROGMEM right_dvorak_up_combo[] = {KC_C, KC_R, COMBO_END};
+// const uint16_t PROGMEM right_dvorak_down_combo[] = {KC_T, KC_N, COMBO_END};
+// const uint16_t PROGMEM right_dvorak_left_combo[] = {KC_H, KC_T, COMBO_END};
+// const uint16_t PROGMEM right_dvorak_right_combo[] = {KC_N, KC_S, COMBO_END};
+// const uint16_t PROGMEM right_qwerty_up_combo[] = {KC_I, KC_O, COMBO_END};
+// const uint16_t PROGMEM right_qwerty_down_combo[] = {KC_K, KC_L, COMBO_END};
+// const uint16_t PROGMEM right_qwerty_left_combo[] = {KC_J, KC_K, COMBO_END};
+// const uint16_t PROGMEM right_qwerty_right_combo[] = {KC_L, KC_SCLN, COMBO_END};
+
+
+combo_t key_combos[COMBO_COUNT] = {
     [DVORAK_CUT] = COMBO_ACTION(dvorak_cut_combo),
     [DVORAK_COPY] = COMBO_ACTION(dvorak_copy_combo),
     [DVORAK_PASTE] = COMBO_ACTION(dvorak_paste_combo),
@@ -62,20 +101,36 @@ combo_t key_combos[VIAL_COMBO_ENTRIES] = {
     [DVORAK_CTRL_Z] = COMBO_ACTION(dvorak_ctrl_z_combo),
     [QWERTY_CTRL_Z] = COMBO_ACTION(qwerty_ctrl_z_combo),
     [DVORAK_CTRL_Y] = COMBO_ACTION(dvorak_ctrl_y_combo),
-    [QWERTY_CTRL_Y] = COMBO_ACTION(qwerty_ctrl_y_combo),
+    [QWERTY_CTRL_Y] = COMBO_ACTION(qwerty_ctrl_y_combo)
+    // [LEFT_DVORAK_UP] = COMBO_ACTION(left_dvorak_up_combo),
+    // [LEFT_DVORAK_DOWN] = COMBO_ACTION(left_dvorak_down_combo),
+    // [LEFT_DVORAK_LEFT] = COMBO_ACTION(left_dvorak_left_combo),
+    // [LEFT_DVORAK_RIGHT] = COMBO_ACTION(left_dvorak_right_combo),
+    // [LEFT_QWERTY_UP] = COMBO_ACTION(left_qwerty_up_combo),
+    // [LEFT_QWERTY_DOWN] = COMBO_ACTION(left_qwerty_down_combo),
+    // [LEFT_QWERTY_LEFT] = COMBO_ACTION(left_qwerty_left_combo),
+    // [LEFT_QWERTY_RIGHT] = COMBO_ACTION(left_qwerty_right_combo),
+    // [RIGHT_DVORAK_UP] = COMBO_ACTION(right_dvorak_up_combo),
+    // [RIGHT_DVORAK_DOWN] = COMBO_ACTION(right_dvorak_down_combo),
+    // [RIGHT_DVORAK_LEFT] = COMBO_ACTION(right_dvorak_left_combo),
+    // [RIGHT_DVORAK_RIGHT] = COMBO_ACTION(right_dvorak_right_combo), 
+    // [RIGHT_QWERTY_UP] = COMBO_ACTION(right_qwerty_up_combo),
+    // [RIGHT_QWERTY_DOWN] = COMBO_ACTION(right_qwerty_down_combo),
+    // [RIGHT_QWERTY_LEFT] = COMBO_ACTION(right_qwerty_left_combo),
+    // [RIGHT_QWERTY_RIGHT] = COMBO_ACTION(right_qwerty_right_combo),
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-// Layer 0: Dvorak base layer
+// Layer 0: Dvorak base layer 
 [0] = LAYOUT_split_3x6_3_ex2(
     //,--------------------------------------------------------------.  ,--------------------------------------------------------------.
         KC_ESC,  KC_QUOT, KC_COMM,  KC_DOT,    KC_P,    KC_Y,   TO(0),      TO(1),    KC_F,    KC_G,    KC_C,    KC_R,    KC_L, KC_BSPC,
     //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-        KC_LSFT,    KC_A,    KC_E,    KC_I,    KC_O,    KC_U,   TO(2),      TO(3),    KC_D,    KC_H,    KC_T,    KC_N,    KC_S, KC_RSFT,
+        KC_LSFT,    KC_A,    KC_O,    KC_E,    KC_U,    KC_I,   TO(2),      TO(3),    KC_D,    KC_H,    KC_T,    KC_N,    KC_S, KC_RSFT,
     //|--------+--------+--------+--------+--------+--------+--------'  `--------+--------+--------+--------+--------+--------+--------|
         KC_LCTL,    KC_SCLN, KC_Q,    KC_J,    KC_K,    KC_X,                         KC_B,    KC_M,    KC_W,    KC_V,    KC_Z, KC_RCTL,
     //|--------+--------+--------+--------+--------+--------+--------.  ,--------+--------+--------+--------+--------+--------+--------|
-                                            KC_LALT,  KC_ENT,   MO(4),      MO(5),  KC_SPC,  KC_RGUI
+                                            KC_LALT,  MO(4),   KC_ENT,      MO(5),  KC_SPC,  KC_RGUI
                                         //`--------------------------'  `--------------------------'
 ),
 
@@ -88,7 +143,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     //|--------+--------+--------+--------+--------+--------+--------'  `--------+--------+--------+--------+--------+--------+--------|
         KC_LCTL,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                         KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH, KC_RCTL,
     //|--------+--------+--------+--------+--------+--------+--------.  ,--------+--------+--------+--------+--------+--------+--------|
-                                            KC_LALT,  KC_ENT,   MO(4),      MO(5),  KC_SPC,  KC_RGUI
+                                            KC_LALT,  MO(4),   KC_ENT,      MO(5),  KC_SPC,  KC_RGUI
                                         //`--------------------------'  `--------------------------'
 ),
 
@@ -104,7 +159,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                             XXXXXXX,  KC_SPC, KC_LALT,    XXXXXXX, XXXXXXX, XXXXXXX
                                         //`--------------------------'  `--------------------------'
 ),
-
 // Layer 3: Numpad layer
 [3] = LAYOUT_split_3x6_3_ex2(
     //,--------------------------------------------------------------.  ,--------------------------------------------------------------.
@@ -114,7 +168,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     //|--------+--------+--------+--------+--------+--------+--------'  `--------+--------+--------+--------+--------+--------+--------|
         KC_LCTL, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      KC_KP_0, KC_KP_1, KC_KP_2, KC_KP_3, KC_KP_EQUAL, KC_ENT,
     //|--------+--------+--------+--------+--------+--------+--------.  ,--------+--------+--------+--------+--------+--------+--------|
-                                            KC_LGUI, KC_ENT, XXXXXXX,    XXXXXXX, KC_SPC, KC_RALT
+                                            KC_LALT, XXXXXXX, KC_ENT,     XXXXXXX,  KC_SPC, KC_RGUI
                                         //`--------------------------'  `--------------------------'
 ),
 
@@ -127,7 +181,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     //|--------+--------+--------+--------+--------+--------+--------'  `--------+--------+--------+--------+--------+--------+--------|
         _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      KC_BSLS, KC_SLSH, KC_MINS, KC_EQL,  KC_QUOT, _______,
     //|--------+--------+--------+--------+--------+--------+--------.  ,--------+--------+--------+--------+--------+--------+--------|
-                                            _______, KC_GRV,  _______,    _______, KC_F11,  KC_F12
+                                            XXXXXXX, XXXXXXX, XXXXXXX,     KC_GRV,  KC_F11,  KC_F12
                                         //`--------------------------'  `--------------------------'
 ),
 
@@ -140,52 +194,52 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     //|--------+--------+--------+--------+--------+--------+--------'  `--------+--------+--------+--------+--------+--------+--------|
 _______, XXXXXXX, LSFT(KC_LBRC), KC_LBRC, LSFT(KC_9), XXXXXXX,                     XXXXXXX, LSFT(KC_0), KC_RBRC, LSFT(KC_RBRC), XXXXXXX, _______,
     //|--------+--------+--------+--------+--------+--------+--------.  ,--------+--------+--------+--------+--------+--------+--------|
-                                            _______, KC_MPLY, _______,    _______, KC_MPLY, _______
+                                            _______, XXXXXXX, KC_MPLY,    XXXXXXX, XXXXXXX, _______
                                         //`--------------------------'  `--------------------------'
 )
 };
 
-void process_combo_event(uint16_t combo_index, bool pressed) {
+void process_combo_event(uint16_t combo_index, bool pressed) { // on MacOS / iPadOS
     switch(combo_index) {
         case DVORAK_CUT:
             if (pressed) {
                 if (layer_state_is(DVORAK)) {
-                    tap_code16(LCTL(KC_X));
+                    tap_code16(LGUI(KC_X));
                 }
             }
             break;
         case DVORAK_COPY:
             if (pressed) {
                 if (layer_state_is(DVORAK)) {
-                    tap_code16(LCTL(KC_C));
+                    tap_code16(LGUI(KC_C));
                 }
             }
             break;
         case DVORAK_PASTE:
             if (pressed) {
                 if (layer_state_is(DVORAK)) {
-                    tap_code16(LCTL(KC_V));
+                    tap_code16(LGUI(KC_V));
                 }
             }
             break;
         case QWERTY_CUT:
             if (pressed) {
                 if (layer_state_is(QWERTY)) {
-                    tap_code16(LCTL(KC_X));
+                    tap_code16(LGUI(KC_X));
                 }
             }
             break;
         case QWERTY_COPY:
             if (pressed) {
                 if (layer_state_is(QWERTY)) {
-                    tap_code16(LCTL(KC_C));
+                    tap_code16(LGUI(KC_C));
                 }
             }
             break;
         case QWERTY_PASTE:
             if (pressed) {
                 if (layer_state_is(QWERTY)) {
-                    tap_code16(LCTL(KC_V));
+                    tap_code16(LGUI(KC_V));
                 }
             }
             break;
@@ -200,7 +254,7 @@ void process_combo_event(uint16_t combo_index, bool pressed) {
         case DVORAK_CTRL_BSPC:
             if (pressed) {
                 if (layer_state_is(DVORAK)) {
-                    tap_code16(LCTL(KC_BSPC));
+                    tap_code16(LALT(KC_BSPC));
                 }
             }
             break;
@@ -214,7 +268,7 @@ void process_combo_event(uint16_t combo_index, bool pressed) {
         case QWERTY_CTRL_BSPC:
             if (pressed) {
                 if (layer_state_is(QWERTY)) {
-                    tap_code16(LCTL(KC_BSPC));
+                    tap_code16(LALT(KC_BSPC));
                 }
             }
             break;
@@ -222,34 +276,146 @@ void process_combo_event(uint16_t combo_index, bool pressed) {
         case DVORAK_CTRL_Z:
             if (pressed) {
                 if (layer_state_is(DVORAK)) {
-                    tap_code16(LCTL(KC_Z));
+                    tap_code16(LGUI(KC_Z));
                 }
             }
             break;
         case QWERTY_CTRL_Z:
             if (pressed) {
                 if (layer_state_is(QWERTY)) {
-                    tap_code16(LCTL(KC_Z));
+                    tap_code16(LGUI(KC_Z));
                 }
             }
             break;
         case DVORAK_CTRL_Y:
             if (pressed) {
                 if (layer_state_is(DVORAK)) {
-                    tap_code16(LCTL(KC_Y));
+                    tap_code16(LGUI(LSFT(KC_Z)));
                 }
             }
             break;
+        case QWERTY_CTRL_Y:
+            if (pressed) {
+                if (layer_state_is(QWERTY)) {
+                    tap_code16(LGUI(LSFT(KC_Z)));
+                }
+            }
+            break;
+
+        /*
+        case LEFT_DVORAK_UP:
+            if (pressed) {
+                if (layer_state_is(DVORAK)) {
+                    tap_code16(KC_UP);
+                }
+            }
+            break;
+        case LEFT_DVORAK_DOWN:
+            if (pressed) {
+                if (layer_state_is(DVORAK)) {
+                    tap_code16(KC_DOWN);
+                }
+            }
+            break;
+        case LEFT_DVORAK_LEFT:
+            if (pressed) {
+                if (layer_state_is(DVORAK)) {
+                    tap_code16(KC_LEFT);
+                }
+            }
+            break;
+        case LEFT_DVORAK_RIGHT:
+            if (pressed) {
+                if (layer_state_is(DVORAK)) {
+                    tap_code16(KC_RIGHT);
+                }
+            }
+            break;
+        case LEFT_QWERTY_UP:
+            if (pressed) {
+                if (layer_state_is(QWERTY)) {
+                    tap_code16(KC_UP);
+                }
+            }
+            break;
+        case LEFT_QWERTY_DOWN:
+            if (pressed) {
+                if (layer_state_is(QWERTY)) {
+                    tap_code16(KC_DOWN);
+                }
+            }
+            break;
+        case LEFT_QWERTY_LEFT:
+            if (pressed) {
+                if (layer_state_is(QWERTY)) {
+                    tap_code16(KC_LEFT);
+                }
+            }
+            break;
+        case LEFT_QWERTY_RIGHT:
+            if (pressed) {
+                if (layer_state_is(QWERTY)) {
+                    tap_code16(KC_RIGHT);
+                }
+            }
+            break;
+
+        case RIGHT_DVORAK_UP:
+            if (pressed) {
+                if (layer_state_is(DVORAK)) {
+                    tap_code16(KC_UP);
+                }
+            }
+            break;
+        case RIGHT_DVORAK_DOWN:
+            if (pressed) {
+                if (layer_state_is(DVORAK)) {
+                    tap_code16(KC_DOWN);
+                }
+            }
+            break;
+        case RIGHT_DVORAK_LEFT:
+            if (pressed) {
+                if (layer_state_is(DVORAK)) {
+                    tap_code16(KC_LEFT);
+                }
+            }
+            break;
+        case RIGHT_DVORAK_RIGHT:
+            if (pressed) {
+                if (layer_state_is(DVORAK)) {
+                    tap_code16(KC_RIGHT);
+                }
+            }
+            break;
+        case RIGHT_QWERTY_UP:
+            if (pressed) {
+                if (layer_state_is(QWERTY)) {
+                    tap_code16(KC_UP);
+                }
+            }
+            break;
+        case RIGHT_QWERTY_DOWN:
+            if (pressed) {
+                if (layer_state_is(QWERTY)) {
+                    tap_code16(KC_DOWN);
+                }
+            }
+            break;
+        case RIGHT_QWERTY_LEFT:
+            if (pressed) {
+                if (layer_state_is(QWERTY)) {
+                    tap_code16(KC_LEFT);
+                }
+            }
+            break;
+        case RIGHT_QWERTY_RIGHT:
+            if (pressed) {
+                if (layer_state_is(QWERTY)) {
+                    tap_code16(KC_RIGHT);
+                }
+            }
+            break;
+        */
     }
 };
-
-#ifdef ENCODER_MAP_ENABLE
-const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
-  [0] = { ENCODER_CCW_CW(RGB_MOD, RGB_RMOD), ENCODER_CCW_CW(RGB_HUI, RGB_HUD), ENCODER_CCW_CW(RGB_VAI, RGB_VAD), ENCODER_CCW_CW(RGB_SAI, RGB_SAD), },
-  [1] = { ENCODER_CCW_CW(RGB_MOD, RGB_RMOD), ENCODER_CCW_CW(RGB_HUI, RGB_HUD), ENCODER_CCW_CW(RGB_VAI, RGB_VAD), ENCODER_CCW_CW(RGB_SAI, RGB_SAD), },
-  [2] = { ENCODER_CCW_CW(RGB_MOD, RGB_RMOD), ENCODER_CCW_CW(RGB_HUI, RGB_HUD), ENCODER_CCW_CW(RGB_VAI, RGB_VAD), ENCODER_CCW_CW(RGB_SAI, RGB_SAD), },
-  [3] = { ENCODER_CCW_CW(RGB_MOD, RGB_RMOD), ENCODER_CCW_CW(RGB_HUI, RGB_HUD), ENCODER_CCW_CW(RGB_VAI, RGB_VAD), ENCODER_CCW_CW(RGB_SAI, RGB_SAD), },
-  [4] = { ENCODER_CCW_CW(RGB_MOD, RGB_RMOD), ENCODER_CCW_CW(RGB_HUI, RGB_HUD), ENCODER_CCW_CW(RGB_VAI, RGB_VAD), ENCODER_CCW_CW(RGB_SAI, RGB_SAD), },
-  [5] = { ENCODER_CCW_CW(RGB_MOD, RGB_RMOD), ENCODER_CCW_CW(RGB_HUI, RGB_HUD), ENCODER_CCW_CW(RGB_VAI, RGB_VAD), ENCODER_CCW_CW(RGB_SAI, RGB_SAD), },
-};
-#endif
