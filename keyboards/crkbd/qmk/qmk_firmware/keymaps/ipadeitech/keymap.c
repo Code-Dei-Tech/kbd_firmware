@@ -6,7 +6,8 @@ enum layers {
     PROCREATE,
     NUMPAD,
     NUM_SYM,
-    UTILITIES
+    UTILITIES,
+    SYMBOLS
 };
 
 enum combo_events {
@@ -24,8 +25,8 @@ enum combo_events {
 
     DVORAK_CTRL_Z,
     QWERTY_CTRL_Z,
-    DVORAK_CTRL_Y,
-    QWERTY_CTRL_Y
+    // DVORAK_CTRL_Y,
+    // QWERTY_CTRL_Y
 
     // LEFT_DVORAK_UP,
     // LEFT_DVORAK_DOWN,
@@ -63,8 +64,8 @@ const uint16_t PROGMEM qwerty_ctrl_bspc_combo[] = {KC_P, KC_BSPC, COMBO_END};
 // Define the combos for undo and redo
 const uint16_t PROGMEM dvorak_ctrl_z_combo[] = {KC_QUOT, KC_COMM, COMBO_END};
 const uint16_t PROGMEM qwerty_ctrl_z_combo[] = {KC_Q, KC_W, COMBO_END};
-const uint16_t PROGMEM dvorak_ctrl_y_combo[] = {KC_DOT, KC_P, COMBO_END};
-const uint16_t PROGMEM qwerty_ctrl_y_combo[] = {KC_E, KC_R, COMBO_END};
+// const uint16_t PROGMEM dvorak_ctrl_y_combo[] = {KC_DOT, KC_P, COMBO_END};
+// const uint16_t PROGMEM qwerty_ctrl_y_combo[] = {KC_E, KC_R, COMBO_END};
 
 // Define the combos for arrow keys (left side)
 // const uint16_t PROGMEM left_dvorak_up_combo[] = {KC_COMM, KC_DOT, COMBO_END};
@@ -100,8 +101,8 @@ combo_t key_combos[COMBO_COUNT] = {
     [QWERTY_CTRL_BSPC] = COMBO_ACTION(qwerty_ctrl_bspc_combo),
     [DVORAK_CTRL_Z] = COMBO_ACTION(dvorak_ctrl_z_combo),
     [QWERTY_CTRL_Z] = COMBO_ACTION(qwerty_ctrl_z_combo),
-    [DVORAK_CTRL_Y] = COMBO_ACTION(dvorak_ctrl_y_combo),
-    [QWERTY_CTRL_Y] = COMBO_ACTION(qwerty_ctrl_y_combo)
+    // [DVORAK_CTRL_Y] = COMBO_ACTION(dvorak_ctrl_y_combo),
+    // [QWERTY_CTRL_Y] = COMBO_ACTION(qwerty_ctrl_y_combo)
     // [LEFT_DVORAK_UP] = COMBO_ACTION(left_dvorak_up_combo),
     // [LEFT_DVORAK_DOWN] = COMBO_ACTION(left_dvorak_down_combo),
     // [LEFT_DVORAK_LEFT] = COMBO_ACTION(left_dvorak_left_combo),
@@ -130,7 +131,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     //|--------+--------+--------+--------+--------+--------+--------'  `--------+--------+--------+--------+--------+--------+--------|
         KC_LCTL,    KC_SCLN, KC_Q,    KC_J,    KC_K,    KC_X,                         KC_B,    KC_M,    KC_W,    KC_V,    KC_Z, KC_RCTL,
     //|--------+--------+--------+--------+--------+--------+--------.  ,--------+--------+--------+--------+--------+--------+--------|
-                                            KC_LALT,  MO(4),   KC_ENT,      MO(5),  KC_SPC,  KC_RGUI
+                                        KC_LALT, MO(4), LT(6, KC_ENT),      MO(5),  KC_SPC,  KC_RGUI
                                         //`--------------------------'  `--------------------------'
 ),
 
@@ -143,7 +144,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     //|--------+--------+--------+--------+--------+--------+--------'  `--------+--------+--------+--------+--------+--------+--------|
         KC_LCTL,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                         KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH, KC_RCTL,
     //|--------+--------+--------+--------+--------+--------+--------.  ,--------+--------+--------+--------+--------+--------+--------|
-                                            KC_LALT,  MO(4),   KC_ENT,      MO(5),  KC_SPC,  KC_RGUI
+                                        KC_LALT, MO(4), LT(6, KC_ENT),      MO(5),  KC_SPC,  KC_RGUI
                                         //`--------------------------'  `--------------------------'
 ),
 
@@ -172,30 +173,42 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                         //`--------------------------'  `--------------------------'
 ),
 
-// Layer 4: Symbol layer
+// Layer 4: Number layer
 [4] = LAYOUT_split_3x6_3_ex2(
     //,--------------------------------------------------------------.  ,--------------------------------------------------------------.
-        _______, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   XXXXXXX,    XXXXXXX,   KC_F6,   KC_F7,   KC_F8,   KC_F9,  KC_F10, _______,
+        _______,   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5, XXXXXXX,    XXXXXXX,   KC_F6,   KC_F7,   KC_F8,   KC_F9,  KC_F10, _______,
     //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-        _______, KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    XXXXXXX,    XXXXXXX,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0, _______,
+        _______,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5, XXXXXXX,    XXXXXXX,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0, _______,
     //|--------+--------+--------+--------+--------+--------+--------'  `--------+--------+--------+--------+--------+--------+--------|
-        _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      KC_BSLS, KC_SLSH, KC_MINS, KC_EQL,  KC_QUOT, _______,
+        _______,  KC_F11,  KC_F12,  KC_GRV, KC_BSLS, XXXXXXX,                      XXXXXXX, KC_SLSH, KC_MINS, KC_EQL,  KC_QUOT, _______,
     //|--------+--------+--------+--------+--------+--------+--------.  ,--------+--------+--------+--------+--------+--------+--------|
-                                            XXXXXXX, XXXXXXX, XXXXXXX,     KC_GRV,  KC_F11,  KC_F12
+                                            _______, XXXXXXX, XXXXXXX,    XXXXXXX, _______, _______
                                         //`--------------------------'  `--------------------------'
 ),
 
 // Layer 5: Utility layer
 [5] = LAYOUT_split_3x6_3_ex2(
     //,--------------------------------------------------------------.  ,--------------------------------------------------------------.
-   LALT(KC_TAB), KC_MUTE, KC_VOLD,   KC_UP, KC_VOLU, XXXXXXX, XXXXXXX,    XXXXXXX,  KC_INS, LCTL(LSFT(KC_TAB)), KC_PGUP, LCTL(KC_TAB), KC_PSCR, KC_DEL,
+        _______, KC_MUTE, KC_VOLD,   KC_UP, KC_VOLU, XXXXXXX, XXXXXXX,    XXXXXXX,  KC_INS, LCTL(LSFT(KC_TAB)), KC_UP, LCTL(KC_TAB), KC_PSCR, KC_DEL,
     //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-        _______, KC_MPRV, KC_LEFT, KC_DOWN, KC_RGHT, KC_MNXT, XXXXXXX,    XXXXXXX, KC_WBAK, KC_HOME, KC_PGDN,  KC_END, KC_WFWD, _______,
+        _______, XXXXXXX, KC_LEFT, KC_DOWN, KC_RGHT, XXXXXXX, XXXXXXX,    XXXXXXX, KC_HOME, KC_LEFT, KC_DOWN,  KC_RGHT, KC_END, _______,
     //|--------+--------+--------+--------+--------+--------+--------'  `--------+--------+--------+--------+--------+--------+--------|
-_______, XXXXXXX, LSFT(KC_LBRC), KC_LBRC, LSFT(KC_9), XXXXXXX,                     XXXXXXX, LSFT(KC_0), KC_RBRC, LSFT(KC_RBRC), XXXXXXX, _______,
+        _______, XXXXXXX, KC_MPRV, KC_MPLY, KC_MNXT, XXXXXXX,                      KC_WBAK, KC_PGDN, XXXXXXX, KC_PGUP, KC_WFWD, _______,
     //|--------+--------+--------+--------+--------+--------+--------.  ,--------+--------+--------+--------+--------+--------+--------|
-                                            _______, XXXXXXX, KC_MPLY,    XXXXXXX, XXXXXXX, _______
+                                            _______, XXXXXXX, XXXXXXX,    XXXXXXX, _______, _______
                                         //`--------------------------'  `--------------------------'
+),
+
+// Layer 6: Symbol layer
+[6] = LAYOUT_split_3x6_3_ex2(
+    //,--------------------------------------------------------------.  ,--------------------------------------------------------------.
+_______, KC_QUOT, LSFT(KC_LBRC), KC_LBRC, LSFT(KC_9), XXXXXXX,  TO(0),      TO(1), XXXXXXX, LSFT(KC_0), KC_RBRC, LSFT(KC_RBRC), LSFT(KC_SCLN), _______,
+    //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
+_______, LSFT(KC_1), LSFT(KC_2), LSFT(KC_3), LSFT(KC_4), LSFT(KC_5), TO(2), TO(3), LSFT(KC_6), LSFT(KC_7), LSFT(KC_8), KC_MINS, KC_SCLN, _______,
+    //|--------+--------+--------+--------+--------+--------+--------'  `--------+--------+--------+--------+--------+--------+--------|
+_______, XXXXXXX, XXXXXXX, LSFT(KC_GRV), LSFT(KC_BSLS), KC_BSLS,                   KC_SLSH, LSFT(KC_SLSH), LSFT(KC_MINS), LSFT(KC_EQL), LSFT(KC_QUOT), _______,
+    //|--------+--------+--------+--------+--------+--------+--------.  ,--------+--------+--------+--------+--------+--------+--------|
+                                            _______, XXXXXXX, XXXXXXX,     XXXXXXX,  _______, _______
 )
 };
 
@@ -287,20 +300,20 @@ void process_combo_event(uint16_t combo_index, bool pressed) { // on MacOS / iPa
                 }
             }
             break;
-        case DVORAK_CTRL_Y:
-            if (pressed) {
-                if (layer_state_is(DVORAK)) {
-                    tap_code16(LGUI(LSFT(KC_Z)));
-                }
-            }
-            break;
-        case QWERTY_CTRL_Y:
-            if (pressed) {
-                if (layer_state_is(QWERTY)) {
-                    tap_code16(LGUI(LSFT(KC_Z)));
-                }
-            }
-            break;
+        // case DVORAK_CTRL_Y:
+        //     if (pressed) {
+        //         if (layer_state_is(DVORAK)) {
+        //             tap_code16(LGUI(LSFT(KC_Z)));
+        //         }
+        //     }
+        //     break;
+        // case QWERTY_CTRL_Y:
+        //     if (pressed) {
+        //         if (layer_state_is(QWERTY)) {
+        //             tap_code16(LGUI(LSFT(KC_Z)));
+        //         }
+        //     }
+        //     break;
 
         /*
         case LEFT_DVORAK_UP:
